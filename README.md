@@ -7,6 +7,8 @@ This Python library provides a simple and convenient way to interact with the
 personal.ai is an AI that helps you store and recall your memories, knowledge,
 and experiences.
 
+This is not an officially supported library.
+
 ## What is this for?
 
 This library is designed to help developers easily integrate their Python
@@ -62,8 +64,8 @@ print(validation)
 
 ### Basic requirements
 
-Python 3.6 or later
-Poetry
+* Python 3.6 or later
+* Poetry
 
 ### Cloning the repository
 
