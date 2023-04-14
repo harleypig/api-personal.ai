@@ -13,6 +13,11 @@ class PersonalAI:
         }
 
     #-------------------------------------------------------------------------
+    def __repr__(self):
+        masked_api_key = self.api_key[:5] + "..." + self.api_key[-5:]
+        return f"<PersonalAI(api_key='{masked_api_key}', base_url='{self.base_url}')>"
+
+    #-------------------------------------------------------------------------
     def _api(self, method, call, payload=None):
         """
         Make an API call to Personal.AI.
@@ -28,11 +33,10 @@ class PersonalAI:
         """
 
         url = f"{self.base_url}/{call}"
-        payload_json = json.dumps(payload)
 
         try:
             if method == "POST":
-                response = requests.post(url, headers=self.headers, json=payload_json)
+                response = requests.post(url, headers=self.headers, json=payload)
 
             elif method == "GET":
                 response = requests.get(url, headers=self.headers)
@@ -122,7 +126,7 @@ class PersonalAI:
         :rtype: dict
         """
 
-        return self._api("POST", "upload", uri)
+        return self._api("POST", "upload", {"Url": uri})
 
     #-------------------------------------------------------------------------
     def validate_key(self):
